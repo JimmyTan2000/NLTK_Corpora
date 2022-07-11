@@ -25,7 +25,7 @@ Since you may choose the corpus and stopwords, the answers of parts 3 to 8 are i
 This is why this exercise won't be discussed in a lecture. Please hand-in your answers in a PDF file (see iLearn).
 """
 
-# read the file and tidy up the informations 
+# read the file  
 FILE = 'deu_news_2021_30K-sentences.txt'
 f = open(FILE, encoding='utf-8', mode='r')
 text2 = f.read()
@@ -33,13 +33,15 @@ text2 = f.read()
 # create a list of words with punctuations
 list_of_words = nltk.word_tokenize(text2)
 
+# initiate a variable which contains the default german stopwords defined in NLTK Corpus 
 default_stopwords = set(stopwords.words('german'))
 
-# only words
+# only words (no numbers, punctuations, etc)
 def vocabs():
     vocabs = [word.lower() for word in list_of_words if word.isalpha()]
     return vocabs
 
+# all the words without stopwords 
 def vocabs_without_stopwords():
     vocabs_temp = vocabs()
     cleaned = [x for x in vocabs_temp if x not in default_stopwords]
